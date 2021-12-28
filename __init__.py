@@ -15,6 +15,8 @@ matching the data according to the unique tender key (the "CIG" code).
 
 The results are returned as Pandas DataFrames, allowing the user to further manipulate the data using the well-known capabilities
 of the library.
+
+Note: compatibility issues have been observed using Python 3.10.1
 """
 
 __author__ = "Marco Moreno"
