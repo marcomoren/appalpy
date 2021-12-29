@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-from os import truncate
 from appalpy_funcs import *
 from datetime import datetime, date
 from dateutil.relativedelta import relativedelta

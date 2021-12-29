@@ -12,7 +12,6 @@ def ymformat(date:datetime):
     ymformat = str(date)[:7].replace("-","_")
     return ymformat
 
-
 def periods(start:datetime, end:datetime):
     """
     This function generates a list of years and months between the starting and ending dates (inclusive) selected by the user.
@@ -32,8 +31,6 @@ def get_tender_data(date:datetime):
     """
     base_url = "https://dati.anticorruzione.it/opendata/download/dataset/cig-"
     full_url = base_url + ymformat(date)[:4] + "/filesystem/cig_csv_" + ymformat(date) + ".zip"
-    #requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS='ALL'
-    #requests.packages.urllib3.contrib.pyopenssl.extract_from_urllib3()
     tender_csv_file = pd.read_csv(full_url, compression='zip', sep=';', dtype='object')
     return tender_csv_file
 
