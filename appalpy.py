@@ -99,15 +99,18 @@ class Tenders():
             else:
                 pass
         if collapse_contractors is True:
+            data = data[data["id_aggiudicazione"].notnull()]
+            data=data.fillna({"denominazione" : "N/A",
+                              "codice_fiscale": "N/A"})
             keep_columns_list =[col for col in data.columns]
             rule_dict = {
                 i: "first" for i in keep_columns_list
             }
-            join_columns_dic = {"denominazione" :" - ".join,
-                                "codice_fiscale": " - ".join
+            join_columns_dic = {"denominazione" : " - ".join,
+                                "codice_fiscale" : " - ".join
             }
             rule_dict.update(join_columns_dic)
-            data = data.groupby("id_aggiudicazione")[data.columns.tolist()].agg(rule_dict).reset_index(drop=True)
+            data = data.groupby("id_aggiudicazione", as_index=False).agg(rule_dict).reset_index(drop=True)
         else:
             pass
         return data
